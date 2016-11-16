@@ -1,5 +1,5 @@
-Throw up a quick, collaborative script. 📱
+##Throw up a quick, collaborative script. 📱
 
-Get shit filmed. 🎬
+##Get the shot. 🎬
 
-Get Noticed. 💁
+##Get Noticed. 💁

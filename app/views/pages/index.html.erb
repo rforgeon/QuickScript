@@ -2,14 +2,27 @@
 
 <div class="row">
   <div class="col-md-8">
-    <%@pages.each do |page| %>
-      <div class="media">
-        <div class="media-body">
-          <h4 class="media-heading">
-            <%= link_to page.title, page %>
+    <%if current_user == nil || current_user.premium_user != true%>
+      <%@pages.each do |page| %>
+        <div class="media">
+          <div class="media-body">
+            <h4 class="media-heading">
+            <%if !page.private%>
+              <%= link_to page.title, page %>
+            <%end%>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    <%elsif current_user.premium_user%>
+      <%@pages.each do |page| %>
+        <div class="media">
+          <div class="media-body">
+            <h4 class="media-heading">
+              <%= link_to page.title, page %>
+          </div>
+        </div>
+      <% end %>
+    <%end%>
   <div class="col-md-4">
     <%= link_to "New Page", new_page_path, class: 'btn btn-success' %>
   </div>

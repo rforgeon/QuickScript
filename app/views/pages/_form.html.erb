@@ -17,10 +17,17 @@
      <%= f.label :body %>
      <%= f.text_area :body, class: 'form-control', placeholder: "Enter body" %>
     <%end%>
-    <%= form_group_tag(page.errors[:private]) do %>
-     <%= f.label :private %>
-       <%= f.check_box :private, class: 'checkbox' %>
-     <% end %>
+    <%if current_user.premium_user%>
+      <%= form_group_tag(page.errors[:private]) do %>
+       <%= f.label :private %>
+         <%= f.check_box :private, class: 'checkbox' %>
+       <% end %>
+    <%else%>
+      <div>
+        <h3>All pages are publicly viewable and editable.</h3>
+        <h4>Become a <%=link_to("Premium User",new_charge_path)%> to create private pages.</h4>
+      <div>
+    <%end%>
    <div class="form-group">
      <%= f.submit "Save", class: 'btn btn-success' %>
    </div>

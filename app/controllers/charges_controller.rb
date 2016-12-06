@@ -17,7 +17,7 @@ def create
 
   @user = current_user
   @user.premium_user = true
-  @user.save 
+  @user.save
 
   flash[:notice] = "Purchase completed, enjoy!"
   redirect_to root_path
@@ -34,6 +34,27 @@ def new
      description: "Pro Membership - #{current_user.email}",
      amount: 299
    }
+ end
+
+ def downgrade
+   @pages = Page.all
+ end
+
+ def execute_downgrade
+   @user = current_user
+   @user.premium_user = false;
+   @user.save
+   @allPages = Page.all
+   @allPages.each do |page|
+     if page.user_id == current_user.id
+       page.private = false
+       page.save
+     end
+   end
+
+   flash[:notice] = "Downgraded to Free Account"
+
+   redirect_to edit_user_registration_path
  end
 
 

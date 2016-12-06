@@ -1,0 +1,23 @@
+
+
+<body>
+
+
+  <h2>Are you sure you would like to downgrade your account?</h2>
+
+  <h4>You are currently not enrolled in a monthly subscription.</h4>
+
+  <h4>The following pages will become public once you downgrade your account:</h4>
+
+  <%@pages.each do |page|%>
+    <% if page.user_id == current_user.id%>
+      <h3><%= link_to page.title, page %></h3>
+    <%end%>
+  <%end%>
+
+<div style="margin-top:50px">
+  <%= button_to 'Yes, Downgrade', charge_execute_downgrade_path, method: :post %>  <br>
+  <h4><%=link_to "Cancel",root_path%></h4>
+</div>
+
+</body>

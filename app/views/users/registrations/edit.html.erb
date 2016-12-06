@@ -7,7 +7,7 @@
     <div style="margin:10px">
       <% if current_user.premium_user%>
         <h3>✨ Premium Account ✨</h3>
-        <p><%=link_to("Downgrade",new_charge_path)%> to Free Account</p>
+        <p><%=link_to("Downgrade",charge_downgrade_path(current_user))%> to Free Account</p>
       <%else%>
         <h3>Free Account.
         Create private pages as a <%=link_to("Premium User",new_charge_path)%>, today!</h3>

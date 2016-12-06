@@ -16,6 +16,7 @@ class PagesController < ApplicationController
 
    def create
      @page = Page.new(page_params)
+     @page.user_id = current_user.id
 
      if @page.save
        redirect_to @page, notice: "Page was saved successfully."

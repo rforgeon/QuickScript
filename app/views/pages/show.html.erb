@@ -1,8 +1,14 @@
+
+
 <h1><%=@page.title%></h1>
 
 <br>
+<%markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)%>
+<div id='bodyText' style='margin:10px;'></div>
+<%@bodyText =  raw markdown.render(@page.body)%>
+<%= @bodyText%>
 
-<%=@page.body%>
+
 
 <%= link_to "Edit Page", edit_page_path, class: 'btn btn-primary' %>
 <%= link_to "Delete Page", @page, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this Page?' } %>

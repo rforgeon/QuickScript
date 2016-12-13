@@ -1,0 +1,6 @@
+<div class="col-md-8">
+    <%= render partial: 'form', locals: {collaborator: @collaborator} %>
+</div>
+
+<%@page = Page.find(params[:page_id])%>
+<p>page id: <%=@page.id%>

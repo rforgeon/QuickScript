@@ -10,7 +10,7 @@
 
 10.times do
   page = Page.create!(
-  user: users.sample,
+  user_id: users.sample.id,
   title: Faker::Book.title,
   body: Faker::Hipster.paragraph,
   private: false

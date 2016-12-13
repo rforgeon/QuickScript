@@ -1,5 +1,28 @@
-Edit Page
 
-<div class="col-md-8">
+
+
+<h1>Edit Page</h1>
+
+<div >
     <%= render partial: 'form', locals: {page: @page} %>
+
+
+
 </div>
+
+<%if current_user.premium_user == false%>
+  <div>
+    <h3>All pages are publicly viewable and editable.</h3>
+    <h4>Become a <%=link_to("Premium User",new_charge_path)%> to create private pages.</h4>
+  <div>
+<%else%>
+  <h4>Collaborators</h4>
+  <%@collaborators.each do |c|%>
+    <%if c.page_id == @page.id%>
+      <h5 style="color:grey"><%=['😎', '😜','😸','👽','🐼','🐵','🐶','🐯'].sample%> <%=c.email%></h5>
+    <%else%>
+      There are currently no collaborators on this page.
+    <%end%>
+  <%end%>
+  <h4><%=link_to "+ Collaborator to this page",new_collaborator_path(:page_id => @page.id) %></h4>
+<%end%>

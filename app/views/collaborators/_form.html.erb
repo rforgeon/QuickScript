@@ -1,0 +1,24 @@
+<%= form_for collaborator do |f| %>
+    <%if collaborator.errors.any?%>
+      <div class = "alert alert-danger">
+        <h4><%= pluralize(collaborator.errors.count, "error")%>.</h4>
+        <ul>
+          <% collaborator.errors.full_messages.each do |msg|%>
+            <li><%=msg%></li>
+          <%end%>
+        </ul>
+      </div>
+    <%end%>
+    <%= form_group_tag(collaborator.errors[:email]) do %>
+     <%= f.label :email %>
+     <%= f.text_field :email, class: 'form-control' , placeholder: "Enter Collaborator's Email", :required => true %>
+
+     <%= hidden_field_tag 'page_id', params[:page_id] %>
+    <%end%>
+   <div class="form-group">
+     <%= f.submit "Save", class: 'btn btn-success' %>
+
+   </div>
+
+
+ <% end %>

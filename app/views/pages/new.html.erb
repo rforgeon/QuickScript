@@ -4,3 +4,10 @@
 <div class="col-md-8">
     <%= render partial: 'form', locals: {page: @page} %>
 </div>
+
+<%if current_user.premium_user == false%>
+  <div>
+    <h3>All pages are publicly viewable and editable.</h3>
+    <h4>Become a <%=link_to("Premium User",new_charge_path)%> to create private pages.</h4>
+  <div>
+<%end%>

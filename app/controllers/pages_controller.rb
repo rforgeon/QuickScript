@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   before_filter :authenticate_user!, :except => [:index,:show]
 
   def index
-     @pages = Page.all
+     @pages = policy_scope(Page)
    end
 
    def show
@@ -11,7 +11,7 @@ class PagesController < ApplicationController
    end
 
    def new
-     @page = Page.new 
+     @page = Page.new
    end
 
    def create
@@ -28,6 +28,7 @@ class PagesController < ApplicationController
 
    def edit
      @page = Page.find(params[:id])
+     @collaborators = Collaborator.all
    end
 
    def update

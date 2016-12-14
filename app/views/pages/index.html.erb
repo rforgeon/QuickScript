@@ -7,9 +7,11 @@
         <div class="media">
           <div class="media-body">
             <h4 class="media-heading">
-            <%if !page.private%>
-              <%= link_to page.title, page %>
-            <%end%>
+              <div>
+                <%= link_to page.title, page %>
+              </div>
+            </h4>
+              <small>created by <%=User.find(page.user_id).email%></small>
           </div>
         </div>
       <% end %>
@@ -18,7 +20,11 @@
         <div class="media">
           <div class="media-body">
             <h4 class="media-heading">
-              <%= link_to page.title, page %>
+              <div>
+                <%= link_to page.title, page %>
+              </div>
+            </h4>
+              <small>created by <%=User.find(page.user_id).email%></small>
           </div>
         </div>
       <% end %>

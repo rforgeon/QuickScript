@@ -41,6 +41,18 @@ class CollaboratorsController < ApplicationController
     @collaborator = Collaborator.new
   end
 
+  def destroy
+   @collaborator = Collaborator.find(params[:id])
+
+   if @collaborator.destroy
+     flash[:notice] = "#{@collaborator.email} was removed as a collaborator."
+     redirect_to pages_path
+   else
+     flash.now[:alert] = "There was an error removing #{@collaborator.email}."
+     render :show
+   end
+ end
+
   private
 
   def collaborator_params

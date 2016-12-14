@@ -19,7 +19,11 @@
   <h4>Collaborators</h4>
   <%@collaborators.each do |c|%>
     <%if c.page_id == @page.id%>
-      <h5 style="color:grey"><%=['😎', '😜','😸','👽','🐼','🐵','🐶','🐯'].sample%> <%=c.email%></h5>
+      <h5 style="color:grey">
+        <%=['😎', '😜','😸','👽','🐼','🐵','🐶','🐯'].sample%>
+        <%=c.email%>
+        <%= link_to c, method: :delete, data:{confirm: "Remove #{c.email} as a collaborator?"} do %><i class="fa fa-exclamation-triangle"></i> remove<% end %>
+      </h5>
     <%else%>
       There are currently no collaborators on this page.
     <%end%>

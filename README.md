@@ -13,4 +13,4 @@ Currently, Quickscript is focussed on creating quick, collaborative, original co
 ##How
 Quckscript's main components include a Ruby on Rails backend, [redcarpet](https://github.com/vmg/redcarpet) markdown gem, and [Stripe](https://stripe.com/) to charge for private pages.  
 
-[[!](http://i.giphy.com/MCGnPHaH1789W.gif)](https://quickscript.herokuapp.com/)
+[![](http://i.giphy.com/MCGnPHaH1789W.gif)](https://quickscript.herokuapp.com/)
